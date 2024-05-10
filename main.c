@@ -1,14 +1,17 @@
 #include <raylib.h>
+#include <stdio.h>
 int main(void)
 {
   const int screenHight = 450;
   const int screenWidth = 800;
   InitWindow(screenWidth, screenHight, "Window");
   SetTargetFPS(60);
+  int Player1_score = 0;
+  int Player2_score = 0;
   int player1Y = 50;
   int Player2Y = 50;
-  int ballX = screenWidth / 4;
-  int ballY = screenHight / 4;
+  int ballX = screenWidth / 2;
+  int ballY = screenHight / 2;
   const int speed = 3;
   const float radius = 20;
   bool toright = true;
@@ -48,11 +51,15 @@ int main(void)
 
     if (ballX == screenWidth - radius)
     {
-      toright = false;
+      ballX = screenWidth / 2;
+      ballY = screenHight / 2;
+      Player1_score += 1;
     }
     if (ballX == 0 + radius)
     {
-      toright = true;
+      ballX = screenWidth / 2;
+      ballY = screenHight / 2;
+      Player2_score += 2;
     }
 
     if (toright)
@@ -86,6 +93,8 @@ int main(void)
     DrawCircle(ballX, ballY, radius, WHITE);
     DrawRectangle(0, player1Y, 15, 120, WHITE);
     DrawRectangle(780, Player2Y, 15, 80, WHITE);
+    DrawText(TextFormat("%d",Player1_score),25,15,30,WHITE);
+    DrawText(TextFormat("%d",Player2_score),750,15,30,WHITE);//void DrawText(const char *text, int posX, int posY, int fontSize, Color color);       // Draw text (using default font)
 
     EndDrawing();
   }
