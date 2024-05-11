@@ -12,7 +12,7 @@ int main(void)
   int Player2Y = 50;
   int ballX = screenWidth / 2;
   int ballY = screenHight / 2;
-  const int speed = 3;
+  const int speed = 10;
   const float radius = 20;
   bool toright = true;
   bool toUp = true;
@@ -79,11 +79,11 @@ int main(void)
     {
       player1Y += speed;
     }
-    if (IsKeyDown(KEY_W))
+    if (IsKeyDown(KEY_S))
     {
       Player2Y -= speed;
     }
-    if (IsKeyDown(KEY_E))
+    if (IsKeyDown(KEY_D))
     {
       Player2Y += speed;
     }
